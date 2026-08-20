@@ -1,4 +1,4 @@
-from fastapi import FastAPI, UploadFile, File
+﻿from fastapi import FastAPI, UploadFile, File
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from dotenv import load_dotenv
@@ -64,8 +64,8 @@ app.add_middleware(
     allow_origins=[
         "http://localhost:5173",
         "http://127.0.0.1:5173",
-        "http://localhost:5174",
-        "http://127.0.0.1:5174",
+        "https://flash-genius-two.vercel.app",
+        "https://flash-genius-fb7u.vercel.app",
     ],
     allow_credentials=True,
     allow_methods=["*"],
