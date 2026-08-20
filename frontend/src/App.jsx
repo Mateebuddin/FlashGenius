@@ -1,7 +1,11 @@
 import { useState } from "react";
 import Header from "./components/Header";
 import FileUpload from "./components/FileUpload";
-import axios from "axios";
+import {
+  generateFlashcards,
+  generateQuiz,
+  generateSummary,
+} from "./services/api";
 import ReactMarkdown from "react-markdown";
 import jsPDF from "jspdf";
 import * as pdfjsLib from "pdfjs-dist";
@@ -186,6 +190,8 @@ function App() {
       setCurrentCard(0);
       setFlipped(false);
       setSearch("");
+      setKnownCards([]);
+      setPracticeCards([]);
 
       setQuiz([]);
       setSelectedAnswers({});
@@ -227,6 +233,8 @@ function App() {
     setCurrentCard(0);
     setFlipped(false);
     setSearch("");
+    setKnownCards([]);
+    setPracticeCards([]);
 
     setQuiz([]);
     setSelectedAnswers({});
@@ -249,12 +257,7 @@ function App() {
     try {
       setLoading(true);
 
-      const response = await axios.post(
-        "http://127.0.0.1:8000/generate",
-        {
-          notes: notes,
-        }
-      );
+      const response = await generateFlashcards(notes);
       console.log("BACKEND RESPONSE:", response.data);
 
       if (
@@ -506,19 +509,13 @@ function App() {
       setScore(0);
       setQuizFinished(false);
 
-      const response = await axios.post(
-        "http://127.0.0.1:8000/generate-quiz",
-        {
-          notes: notes,
-          difficulty: difficulty,
-        }
-      );
+      const response = await generateQuiz(notes, difficulty);
 
       if (
         response.data.quiz &&
         response.data.quiz.length > 0
       ) {
-        setQuiz(response.data.quiz);
+        setQuiz(response.data.quiz.slice(0, 5));
 
         setQuizCount(
           (prev) => prev + 1
@@ -832,12 +829,7 @@ function App() {
       setLoadingSummary(true);
       setSummary("");
 
-      const response = await axios.post(
-        "http://127.0.0.1:8000/generate-summary",
-        {
-          notes: notes,
-        }
-      );
+      const response = await generateSummary(notes);
 
       if (response.data.summary) {
         setSummary(
@@ -1042,6 +1034,8 @@ function App() {
                 setCurrentCard(0);
                 setFlipped(false);
                 setSearch("");
+                setKnownCards([]);
+                setPracticeCards([]);
 
                 setQuiz([]);
                 setSelectedAnswers({});
