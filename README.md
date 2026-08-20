@@ -740,56 +740,33 @@ Production CORS configuration restricts/permits the required frontend origins so
 
 
 
-\## 📸 Screenshots
+## 📸 Screenshots
 
+### 📄 PDF/DOCX Upload & Text Extraction
 
+Upload PDF or DOCX study material and automatically extract the text for AI processing.
 
-\### Home / Study Notes
+![Document Upload](screenshots/document-upload.png)
 
+### 🧠 AI Flashcards
 
+Generate 10 interactive AI-powered flashcards from the provided study notes.
 
-\_Add screenshot here.\_
+![AI Flashcards](screenshots/flashcards.png)
 
+### 📝 AI Quiz Generator
 
+Generate multiple-choice quizzes with Easy, Medium, and Hard difficulty levels.
 
-\### AI Flashcards
+![AI Quiz](screenshots/quiz.png)
 
+### 📚 AI Study Summary
 
+Generate a structured AI-powered study summary from the uploaded or pasted notes.
 
-\_Add screenshot here.\_
+![AI Study Summary](screenshots/summary.png)
 
-
-
-\### AI Quiz
-
-
-
-\_Add screenshot here.\_
-
-
-
-\### AI Study Summary
-
-
-
-\_Add screenshot here.\_
-
-
-
-\### Document Upload
-
-
-
-\_Add screenshot here.\_
-
-
-
-> Screenshots will be added to the repository to demonstrate the live application interface and features.
-
-
-
-\---
-
+---
 
 
 \## 🧪 Production Testing
